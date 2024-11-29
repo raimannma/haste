@@ -1,7 +1,3 @@
-#![deny(clippy::unwrap_used)]
-#![deny(clippy::expect_used)]
-#![deny(clippy::panic)]
-
 // TODO: figure pub scopes for all the things
 pub mod bitreader;
 pub mod demofile;

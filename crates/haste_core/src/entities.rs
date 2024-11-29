@@ -2,8 +2,8 @@ use std::fmt::{self, Binary};
 use std::hash::BuildHasherDefault;
 use std::rc::Rc;
 
-use hashbrown::hash_map::Entry;
 use hashbrown::HashMap;
+use hashbrown::hash_map::Entry;
 use nohash::NoHashHasher;
 
 use crate::bitreader::{BitReader, BitReaderOverflowError};
@@ -68,8 +68,7 @@ pub fn ehandle_to_index(handle: u32) -> i32 {
 fn coord_from_cell(cell_width: u32, max_coord: u32, cell: u16, vec: f32) -> f32 {
     let cell_pos = cell as u32 * cell_width;
     // nanitfi is r, what does it stand for in this context? (copypasting from valve)
-    let r = (cell_pos as i32 - max_coord as i32) as f32 + vec;
-    r
+    (cell_pos as i32 - max_coord as i32) as f32 + vec
 }
 
 #[cfg(feature = "deadlock")]
@@ -138,7 +137,7 @@ pub use dota2::coord_from_cell as dota2_coord_from_cell;
 /// when called from a const context, the function is interpreted by the compiler at compile time
 /// meaning that there's no const of generating key for given path at runtime.
 pub const fn fkey_from_path(path: &[&str]) -> u64 {
-    assert!(path.len() > 0, "invalid path");
+    assert!(!path.is_empty(), "invalid path");
 
     let seed = fxhash::hash_bytes(path[0].as_bytes());
     let mut hash = seed;

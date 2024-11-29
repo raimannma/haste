@@ -5,7 +5,7 @@ use std::rc::Rc;
 
 use hashbrown::HashMap;
 use nohash::NoHashHasher;
-use valveprotos::common::{c_demo_string_tables, CDemoStringTables};
+use valveprotos::common::{CDemoStringTables, c_demo_string_tables};
 
 use crate::bitreader::BitReader;
 
@@ -27,8 +27,7 @@ impl StringHistoryEntry {
     #[inline]
     unsafe fn new_uninit() -> Self {
         Self {
-            // NOTE: the trick is to use this correctly xd
-            #[allow(invalid_value)]
+            #[allow(clippy::uninit_assumed_init)]
             string: MaybeUninit::uninit().assume_init(),
         }
     }
@@ -71,9 +70,7 @@ impl StringTable {
     ) -> Self {
         #[inline(always)]
         unsafe fn make_vec<T>(size: usize) -> Vec<T> {
-            let mut vec = Vec::with_capacity(size);
-            vec.set_len(size);
-            vec
+            Vec::with_capacity(size)
         }
 
         Self {

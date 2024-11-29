@@ -1,20 +1,20 @@
 use std::io::{self, SeekFrom};
 
 use anyhow::Result;
+use prost::Message;
 use valveprotos::common::{
     CDemoFullPacket, CDemoPacket, CDemoStringTables, CsvcMsgCreateStringTable,
     CsvcMsgPacketEntities, CsvcMsgServerInfo, CsvcMsgUpdateStringTable, EDemoCommands, SvcMessages,
 };
-use valveprotos::prost::Message;
 
 use crate::bitreader::BitReader;
-use crate::demofile::{DemoHeaderError, DEMO_RECORD_BUFFER_SIZE};
+use crate::demofile::{DEMO_RECORD_BUFFER_SIZE, DemoHeaderError};
 use crate::demostream::{CmdHeader, DemoStream};
 use crate::entities::{DeltaHeader, Entity, EntityContainer};
 use crate::entityclasses::EntityClasses;
 use crate::fielddecoder::FieldDecodeContext;
 use crate::flattenedserializers::FlattenedSerializerContainer;
-use crate::instancebaseline::{InstanceBaseline, INSTANCE_BASELINE_TABLE_NAME};
+use crate::instancebaseline::{INSTANCE_BASELINE_TABLE_NAME, InstanceBaseline};
 use crate::stringtables::StringTableContainer;
 
 // as can be observed when dumping commands. also as specified in clarity

@@ -2,17 +2,17 @@ use std::hash::BuildHasherDefault;
 use std::rc::Rc;
 
 use dungers::varint;
-use hashbrown::hash_map::Values;
 use hashbrown::HashMap;
+use hashbrown::hash_map::Values;
 use nohash::NoHashHasher;
+use prost::Message;
 use valveprotos::common::{
     CDemoSendTables, CsvcMsgFlattenedSerializer, ProtoFlattenedSerializerFieldT,
     ProtoFlattenedSerializerT,
 };
-use valveprotos::prost::{self, Message};
 
 use crate::fieldmetadata::{
-    get_field_metadata, FieldMetadata, FieldMetadataError, FieldSpecialDescriptor,
+    FieldMetadata, FieldMetadataError, FieldSpecialDescriptor, get_field_metadata,
 };
 use crate::fxhash;
 

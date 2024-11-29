@@ -1,11 +1,11 @@
-use std::collections::hash_map::Entry;
 use std::collections::HashMap;
+use std::collections::hash_map::Entry;
 use std::fs::File;
 use std::io::BufReader;
 
 use anyhow::{Context as _, Result};
 use haste::demofile::DemoFile;
-use haste::entities::{deadlock_coord_from_cell, fkey_from_path, DeltaHeader, Entity};
+use haste::entities::{DeltaHeader, Entity, deadlock_coord_from_cell, fkey_from_path};
 use haste::fxhash;
 use haste::parser::{Context, Parser, Visitor};
 

@@ -18,7 +18,7 @@ pub struct BitReader<'a> {
     did_check_overflow: bool,
 }
 
-impl<'a> Drop for BitReader<'a> {
+impl Drop for BitReader<'_> {
     #[inline]
     fn drop(&mut self) {
         assert!(

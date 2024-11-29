@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{BufReader, Write};
 use std::time::Duration;
 
-use anyhow::{bail, Result};
+use anyhow::{Result, bail};
 use haste::broadcast::{BroadcastFile, BroadcastHttp};
 use haste::demostream::CmdHeader;
 use haste::parser::{Context, Parser, Visitor};

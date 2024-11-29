@@ -6,7 +6,7 @@ use std::io::BufReader;
 use anyhow::{Context as _, Result};
 use haste::demofile::DemoFile;
 use haste::demostream::CmdHeader;
-use haste::entities::{fkey_from_path, DeltaHeader, Entity};
+use haste::entities::{DeltaHeader, Entity, fkey_from_path};
 use haste::fxhash;
 use haste::parser::{Context, Parser, Visitor};
 use haste::valveprotos::common::{CnetMsgTick, EDemoCommands, NetMessages};

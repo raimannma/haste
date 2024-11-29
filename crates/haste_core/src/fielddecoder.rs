@@ -271,7 +271,7 @@ impl InternalF32Decoder {
         let bit_count = field.bit_count.unwrap_or_default();
         // NOTE: that would mean that something is seriously wrong - in that case yell at me
         // loudly.
-        debug_assert!(bit_count >= 0 && bit_count <= 32);
+        debug_assert!((0..=32).contains(&bit_count));
         if bit_count == 0 || bit_count == 32 {
             return Ok(Self {
                 decoder: Box::<InternalF32NoScaleDecoder>::default(),
